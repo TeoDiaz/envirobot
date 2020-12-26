@@ -154,12 +154,10 @@ const changeName = (environment, name) => [(environment = name)];
 
 app.action("select-support-3", async ({ body, ack, say }) => {
   // Acknowledge the action
-  console.log(body)
-  changeName()
+  console.log(body.actions[0].selected_option.value)
 
   await ack();
   await say(`<@${body.user.id}> clicked the button`);
-  await say();
 });
 
 (async () => {
