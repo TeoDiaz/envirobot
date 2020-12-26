@@ -6,10 +6,10 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-let help3 = ":tumbleweed:";
-let remedios3 = ":tumbleweed:";
-let help4 = ":tumbleweed:";
-let remedios4 = ":tumbleweed:";
+let help3 = ":alarm_clock:";
+let remedios3 = ":alarm_clock:";
+let help4 = ":alarm_clock:";
+let remedios4 = ":alarm_clock:";
 
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
@@ -41,8 +41,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help3,
-            emoji: true
+            text: help3
           },
           {
             type: "mrkdwn",
@@ -50,8 +49,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios3,
-            emoji: true
+            text: remedios3
           },
         ],
       },
@@ -103,8 +101,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help4,
-            emoji: true
+            text: help4
           },
           {
             type: "mrkdwn",
@@ -112,8 +109,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios4,
-            emoji: true
+            text: remedios4
           },
         ],
       },
