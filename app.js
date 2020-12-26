@@ -12,6 +12,7 @@ const app = new App({
 router.post("/", function (req, res, next) {
   // Get event payload
   let payload = req.body;
+  console.log(payload)
   // Respond to this event with HTTP 200 status
   res.sendStatus(200);
 });
