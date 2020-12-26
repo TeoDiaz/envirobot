@@ -160,7 +160,7 @@ const changeName = (project, name) => {
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
-    environments[project.push(name)];
+    environments[project].push(name);
   }
 };
 
@@ -193,5 +193,5 @@ app.action("leave-queue", async ({ body, ack, say }) => {
 
   await app.start(port);
 
-  console.log("⚡️ Bolt app is running!");
+  console.log("Envirobot app is running!");
 })();
