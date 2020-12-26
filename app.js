@@ -9,14 +9,6 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-router.post("/", function (req, res, next) {
-  // Get event payload
-  let payload = req.body;
-  console.log(payload)
-  // Respond to this event with HTTP 200 status
-  res.sendStatus(200);
-});
-
 // Listens to incoming messages that contain "hello"
 app.message("hello", async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
