@@ -11,7 +11,7 @@ let remedios3 = "empty";
 let help4 = "empty";
 let remedios4 = "empty";
 
-const section = {
+let section = {
   blocks: [
     {
       type: "header",
