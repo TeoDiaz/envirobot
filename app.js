@@ -55,7 +55,7 @@ app.action("button_click", async ({ body, ack, say }) => {
     port = 8000;
   }
 
-  await app.listen(port);
+  await app.start(port);
 
   console.log("⚡️ Bolt app is running!");
 })();
