@@ -182,7 +182,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help3,
+            text: environments.help3,
           },
           {
             type: "mrkdwn",
@@ -190,7 +190,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios3,
+            text: environments.remedios3,
           },
         ],
       },
@@ -242,7 +242,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help4,
+            text: environments.help4,
           },
           {
             type: "mrkdwn",
@@ -250,7 +250,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios4,
+            text: environments.remedios4,
           },
         ],
       },
