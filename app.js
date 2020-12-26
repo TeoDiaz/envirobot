@@ -159,7 +159,7 @@ const changeName = (project, name) => {
     environments.hasOwnProperty(project) &&
     environments[project][0] == "empty"
   ) {
-    environments[project].shitf();
+    environments[project].shift();
     environments[project.push(name)];
   }
 };
