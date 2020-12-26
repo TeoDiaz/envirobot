@@ -6,6 +6,10 @@ const app = new App({
     signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
+
+let help3 = "teo.diaz"
+let remedios3 = "francis.perez"
+
 // Listens to incoming messages that contain "hello"
 app.message("start", async({ message, say }) => {
     // say() sends a message to the channel where the event was triggered
@@ -34,7 +38,7 @@ app.message("start", async({ message, say }) => {
                     },
                     {
                         type: "mrkdwn",
-                        text: "teo.diaz",
+                        text: help3,
                     },
                     {
                         type: "mrkdwn",
@@ -42,7 +46,7 @@ app.message("start", async({ message, say }) => {
                     },
                     {
                         type: "mrkdwn",
-                        text: "francis.perez",
+                        text: remedios3,
                     },
                 ],
             },
