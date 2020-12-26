@@ -169,7 +169,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
   let project = body.actions[0].selected_option.value;
 
   changeName(project, body.user.id);
-  await say(section);
+  await say(section());
 });
 
 (async () => {
