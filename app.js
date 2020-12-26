@@ -155,6 +155,8 @@ app.message("start", async ({ message, say }) => {
 });
 
 const changeName = (project, name) => {
+  console.log("Project: " + project);
+  
   for (project in environments) {
     if (environments.hasOwnProperty(project)) {
       environments[project] = name;
@@ -168,7 +170,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
 
   let project = body.actions[0].selected_option.value;
 
-  changeName(project, body.user.id);
+  changeName(project, body.user.name);
   await say(section());
 });
 
