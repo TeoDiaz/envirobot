@@ -6,10 +6,12 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-let help3 = ":alarm_clock:";
-let remedios3 = ":alarm_clock:";
-let help4 = ":alarm_clock:";
-let remedios4 = ":alarm_clock:";
+let environments = {
+  help3: "empty",
+  remedios3: "empty",
+  help4: "empty",
+  remedios4: "empty",
+};
 
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
@@ -41,7 +43,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help3
+            text: environments.help3,
           },
           {
             type: "mrkdwn",
@@ -49,7 +51,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios3
+            text: environments.remedios3,
           },
         ],
       },
@@ -101,7 +103,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help4
+            text: environments.help4,
           },
           {
             type: "mrkdwn",
@@ -109,7 +111,7 @@ app.message("start", async ({ message, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios4
+            text: environments.remedios4,
           },
         ],
       },
@@ -180,7 +182,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help3
+            text: help3,
           },
           {
             type: "mrkdwn",
@@ -188,7 +190,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios3
+            text: remedios3,
           },
         ],
       },
@@ -240,7 +242,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: help4
+            text: help4,
           },
           {
             type: "mrkdwn",
@@ -248,7 +250,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
           },
           {
             type: "mrkdwn",
-            text: remedios4
+            text: remedios4,
           },
         ],
       },
