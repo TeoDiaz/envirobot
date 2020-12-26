@@ -151,6 +151,7 @@ app.message("start", async ({ message, say }) => {
 
 app.action("select-support-3", async ({ body, ack, say }) => {
   // Acknowledge the action
+  help3 = body.user.name
   await ack();
   await say(`<@${body.user.id}> clicked the button`);
 });
