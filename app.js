@@ -42,6 +42,7 @@ app.message("start", async ({ message, say }) => {
           {
             type: "mrkdwn",
             text: help3,
+            emoji: true
           },
           {
             type: "mrkdwn",
@@ -50,6 +51,7 @@ app.message("start", async ({ message, say }) => {
           {
             type: "mrkdwn",
             text: remedios3,
+            emoji: true
           },
         ],
       },
@@ -102,6 +104,7 @@ app.message("start", async ({ message, say }) => {
           {
             type: "mrkdwn",
             text: help4,
+            emoji: true
           },
           {
             type: "mrkdwn",
@@ -110,6 +113,7 @@ app.message("start", async ({ message, say }) => {
           {
             type: "mrkdwn",
             text: remedios4,
+            emoji: true
           },
         ],
       },
@@ -137,7 +141,6 @@ app.message("start", async ({ message, say }) => {
               text: {
                 type: "plain_text",
                 text: "Remedios4",
-                emoji: true,
               },
               value: "value-1",
             },
