@@ -73,14 +73,14 @@ app.message("start", async ({ message, say }) => {
                 type: "plain_text",
                 text: "HelpInApp",
               },
-              value: "value-0",
+              value: "help3",
             },
             {
               text: {
                 type: "plain_text",
                 text: "Remedios",
               },
-              value: "value-1",
+              value: "remedios3",
             },
           ],
           action_id: "select-support-3",
@@ -133,14 +133,14 @@ app.message("start", async ({ message, say }) => {
                 type: "plain_text",
                 text: "HelpInApp",
               },
-              value: "value-0",
+              value: "help4",
             },
             {
               text: {
                 type: "plain_text",
                 text: "Remedios4",
               },
-              value: "value-1",
+              value: "remedios4",
             },
           ],
           action_id: "select-support-4",
@@ -150,143 +150,16 @@ app.message("start", async ({ message, say }) => {
   });
 });
 
+const changeName = (environment, name) => [(environment = name)];
+
 app.action("select-support-3", async ({ body, ack, say }) => {
   // Acknowledge the action
-  help3 = body.user.name;
+  console.log(body)
+  changeName()
+
   await ack();
   await say(`<@${body.user.id}> clicked the button`);
-  await say({
-    blocks: [
-      {
-        type: "header",
-        text: {
-          type: "plain_text",
-          text: "Environments Queue",
-          emoji: true,
-        },
-      },
-      {
-        type: "section",
-        fields: [
-          {
-            type: "mrkdwn",
-            text: "*Support-3*",
-          },
-          {
-            type: "mrkdwn",
-            text: "*Owner:*",
-          },
-          {
-            type: "mrkdwn",
-            text: "HelpInApp:",
-          },
-          {
-            type: "mrkdwn",
-            text: environments.help3,
-          },
-          {
-            type: "mrkdwn",
-            text: "Remedios:",
-          },
-          {
-            type: "mrkdwn",
-            text: environments.remedios3,
-          },
-        ],
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: "Select a project to owe",
-        },
-        accessory: {
-          type: "static_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select an item",
-          },
-          options: [
-            {
-              text: {
-                type: "plain_text",
-                text: "HelpInApp",
-              },
-              value: "value-0",
-            },
-            {
-              text: {
-                type: "plain_text",
-                text: "Remedios",
-              },
-              value: "value-1",
-            },
-          ],
-          action_id: "select-support-3",
-        },
-      },
-      {
-        type: "section",
-        fields: [
-          {
-            type: "mrkdwn",
-            text: "*Support-4*",
-          },
-          {
-            type: "mrkdwn",
-            text: "*Owner:*",
-          },
-          {
-            type: "mrkdwn",
-            text: "HelpInApp:",
-          },
-          {
-            type: "mrkdwn",
-            text: environments.help4,
-          },
-          {
-            type: "mrkdwn",
-            text: "Remedios:",
-          },
-          {
-            type: "mrkdwn",
-            text: environments.remedios4,
-          },
-        ],
-      },
-      {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: "Select a project to owe",
-        },
-        accessory: {
-          type: "static_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select an item",
-          },
-          options: [
-            {
-              text: {
-                type: "plain_text",
-                text: "HelpInApp",
-              },
-              value: "value-0",
-            },
-            {
-              text: {
-                type: "plain_text",
-                text: "Remedios4",
-              },
-              value: "value-1",
-            },
-          ],
-          action_id: "select-support-4",
-        },
-      },
-    ],
-  });
+  await say();
 });
 
 (async () => {
