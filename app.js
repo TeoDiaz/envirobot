@@ -7,7 +7,6 @@ const app = new App({
 });
 
 app.event("challenge", async ({ message, ack, say }) => {
-  await ack();
   console.log(message);
 });
 
