@@ -8,10 +8,14 @@ const app = new App({
 
 let environments = {
   help3: ["empty"],
-  remedios3: ["empty"],
+  remedios3: ["empty", "francis", "rebeca"],
   help4: ["empty"],
   remedios4: ["empty"],
 };
+
+const setName = (project) => {
+  environments[project][0]
+}
 
 let section = () => {
   return {
@@ -33,7 +37,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: "*Owner:*",
+            text: "*Queue:*",
           },
           {
             type: "mrkdwn",
@@ -41,7 +45,8 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help3[0],
+            style: "primary",
+            text: setName(help3),
           },
           {
             type: "mrkdwn",
@@ -93,7 +98,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: "*Owner:*",
+            text: "*Queue:*",
           },
           {
             type: "mrkdwn",
@@ -160,6 +165,8 @@ const changeName = (project, name) => {
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
+    environments[project].push(name);
+  } else if (environments.hasOwnProperty(project)) {
     environments[project].push(name);
   }
 };
