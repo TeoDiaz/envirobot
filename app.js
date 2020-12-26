@@ -13,7 +13,7 @@ let environments = {
   remedios4: "empty",
 };
 
-let message = () => {
+let section = () => {
   return {
     blocks: [
       {
@@ -151,7 +151,7 @@ let message = () => {
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
   // say() sends a message to the channel where the event was triggered
-  await say(message());
+  await say(section());
 });
 
 const changeName = (environment, name) => [(environments.environment = name)];
@@ -163,7 +163,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
   let value = body.actions[0].selected_option.value;
   changeName(value, body.user.id);
 
-  await say(message());
+  await say(section());
 });
 
 (async () => {
