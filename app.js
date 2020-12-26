@@ -7,10 +7,10 @@ const app = new App({
 });
 
 let environments = {
-  help3: "empty",
-  remedios3: "empty",
-  help4: "empty",
-  remedios4: "empty",
+  help3: ["empty"],
+  remedios3: ["empty"],
+  help4: ["empty"],
+  remedios4: ["empty"],
 };
 
 let section = () => {
@@ -41,7 +41,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help3,
+            text: environments.help3[0],
           },
           {
             type: "mrkdwn",
@@ -49,7 +49,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.remedios3,
+            text: environments.remedios3[0],
           },
         ],
       },
@@ -101,7 +101,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help4,
+            text: environments.help4[0],
           },
           {
             type: "mrkdwn",
@@ -109,7 +109,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.remedios4,
+            text: environments.remedios4[0],
           },
         ],
       },
@@ -155,13 +155,26 @@ app.message("start", async ({ message, say }) => {
 });
 
 const changeName = (project, name) => {
-  console.log("Project: " + project);
-    if (environments.hasOwnProperty(project)) {
-      environments[project] = name;
-    }
+  if (
+    environments.hasOwnProperty(project) &&
+    environments[project][0] == "empty"
+  ) {
+    environments[project].shitf();
+    environments[project.push(name)];
+  }
 };
 
 app.action("select-support-3", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.actions[0].selected_option.value;
+
+  changeName(project, body.user.name);
+  await say(section());
+});
+
+app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
