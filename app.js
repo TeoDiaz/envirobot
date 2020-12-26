@@ -6,10 +6,10 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-let help3 = "";
-let remedios3 = "";
-let help4 = "";
-let remedios4 = "";
+let help3 = "empty";
+let remedios3 = "empty";
+let help4 = "empty";
+let remedios4 = "empty";
 
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
