@@ -1,3 +1,6 @@
+var express = require("express");
+var router = express();
+
 const { App } = require("@slack/bolt");
 
 // Initializes your app with your bot token and signing secret
@@ -6,8 +9,11 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-app.event("challenge", async ({ message, ack, say }) => {
-  console.log(message);
+router.post("/", function (req, res, next) {
+  // Get event payload
+  let payload = req.body;
+  // Respond to this event with HTTP 200 status
+  res.sendStatus(200);
 });
 
 // Listens to incoming messages that contain "hello"
