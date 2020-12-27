@@ -8,7 +8,7 @@ const app = new App({
 
 let environments = {
   help3: ["empty"],
-  remedios3: ["empty", "francis", "rebeca"],
+  remedios3: ["francis", "rebeca"],
   help4: ["empty"],
   remedios4: ["empty"],
 };
@@ -41,7 +41,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: `:star: ${environments.help3.join(" | ")}`,
+            text: environments.help3.join(" | "),
           },
           {
             type: "mrkdwn",
