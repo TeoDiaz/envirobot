@@ -163,12 +163,12 @@ const changeName = (project, name) => {
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
-    environments[project].push(name);
+    environments[project].push(`:star: ${name} :star:`);
   } else if (
     environments.hasOwnProperty(project) &&
     !environments[project].includes(name)
   ) {
-    environments[project].push(`:star: ${name} :star:`);
+    environments[project].push(name);
   }
 };
 
@@ -185,15 +185,16 @@ app.action("select-support-3", async ({ body, ack, say }) => {
 app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
-  let freezed = environments
 
   let project = body.actions[0].selected_option.value;
 
+  let freezed = environments[project];
+
   changeName(project, body.user.name);
-  if(environments != freezed){
+  
+  if (environments[project] != freezed) {
     await say(section());
   }
-  
 });
 
 (async () => {
