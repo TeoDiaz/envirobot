@@ -13,10 +13,6 @@ let environments = {
   remedios4: ["empty"],
 };
 
-const setName = (project) => {
-  environments[project][0];
-};
-
 let section = () => {
   return {
     blocks: [
@@ -45,7 +41,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: setName("help3"),
+            text: environments.help3,
           },
           {
             type: "mrkdwn",
@@ -53,7 +49,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.remedios3[0],
+            text: environments.remedios3,
           },
         ],
       },
