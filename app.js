@@ -14,8 +14,8 @@ let environments = {
 };
 
 const setName = (project) => {
-  environments[project][0]
-}
+  environments[project][0];
+};
 
 let section = () => {
   return {
@@ -46,7 +46,7 @@ let section = () => {
           {
             type: "mrkdwn",
             style: "primary",
-            text: setName(help3),
+            text: setName("help3"),
           },
           {
             type: "mrkdwn",
