@@ -163,7 +163,7 @@ const changeName = (project, name) => {
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
-    environments[project].push(`:star: ${name} :star:`);
+    environments[project].push(name);
   } else if (
     environments.hasOwnProperty(project) &&
     !environments[project].includes(name)
@@ -191,7 +191,7 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   let freezed = environments[project];
 
   changeName(project, body.user.name);
-  
+
   if (environments[project] != freezed) {
     await say(section());
   }
