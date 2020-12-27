@@ -8,7 +8,7 @@ const app = new App({
 
 let environments = {
   help3: ["empty"],
-  remedios3: ["francis", "rebeca"],
+  remedios3: ["empty", "francis", "rebeca"],
   help4: ["empty"],
   remedios4: ["empty"],
 };
@@ -41,7 +41,8 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help3.join(" | "),
+            text: `:star: ${environments.help3.join(" | ")}`,
+            g,
           },
           {
             type: "mrkdwn",
@@ -160,8 +161,11 @@ const changeName = (project, name) => {
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
-    environments[project].push(`:star: ${name} :star:`);
-  } else if (environments.hasOwnProperty(project)) {
+    environments[project].push(name);
+  } else if (
+    environments.hasOwnProperty(project) &&
+    !environments[project].includes(name)
+  ) {
     environments[project].push(name);
   }
 };
