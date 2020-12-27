@@ -42,7 +42,6 @@ let section = () => {
           {
             type: "mrkdwn",
             text: `:star: ${environments.help3.join(" | ")}`,
-            g,
           },
           {
             type: "mrkdwn",
