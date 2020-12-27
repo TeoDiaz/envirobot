@@ -85,6 +85,21 @@ let section = () => {
         },
       },
       {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "Leave Queue",
+            },
+            style: "danger",
+            value: "leave-queue-support-3",
+          },
+        ],
+      },
+      {
         type: "divider",
       },
       {
@@ -146,6 +161,21 @@ let section = () => {
           ],
           action_id: "select-support-4",
         },
+      },
+      {
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "Leave Queue",
+            },
+            style: "danger",
+            value: "leave-queue-support-4",
+          },
+        ],
       },
     ],
   };
