@@ -41,7 +41,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help3.join(' '),
+            text: `:star: ${environments.help3.join(' | ')}`,
           },
           {
             type: "mrkdwn",
@@ -49,7 +49,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.remedios3.join(' '),
+            text: environments.remedios3.join(' | '),
           },
         ],
       },
