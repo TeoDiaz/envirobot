@@ -85,6 +85,9 @@ let section = () => {
         },
       },
       {
+        type: "divider",
+      },
+      {
         type: "section",
         fields: [
           {
@@ -165,7 +168,7 @@ const changeName = (project, name) => {
     environments.hasOwnProperty(project) &&
     !environments[project].includes(name)
   ) {
-    environments[project].push(name);
+    environments[project].push(`:star: ${name} :star:`);
   }
 };
 
@@ -182,11 +185,15 @@ app.action("select-support-3", async ({ body, ack, say }) => {
 app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
+  let freezed = environments
 
   let project = body.actions[0].selected_option.value;
 
   changeName(project, body.user.name);
-  await say(section());
+  if(environments != freezed){
+    await say(section());
+  }
+  
 });
 
 (async () => {
