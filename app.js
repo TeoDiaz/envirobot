@@ -45,7 +45,6 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            style: "primary",
             text: setName("help3"),
           },
           {
