@@ -178,16 +178,6 @@ app.action("select-support-3", async ({ body, ack, say }) => {
 
   let project = body.actions[0].selected_option.value;
 
-  changeName(project, body.user.name);
-  await say(section());
-});
-
-app.action("leave-queue", async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
-
-  let project = body.actions[0].selected_option.value;
-
   let freezed = environments[project];
 
   changeName(project, body.user.name);
@@ -195,6 +185,11 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   if (environments[project] != freezed) {
     await say(section());
   }
+});
+
+app.action("leave-queue", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
 });
 
 (async () => {
