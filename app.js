@@ -60,66 +60,58 @@ let section = () => {
         ],
       },
       {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: "Select a project to owe",
-        },
-        accessory: {
-          type: "static_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select an item",
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            block_id: "help3",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "HelpInApp",
+            },
+            style: "primary",
+            value: "add-queue",
           },
-          options: [
-            {
-              text: {
-                type: "plain_text",
-                text: "HelpInApp",
-              },
-              value: "help3",
+          {
+            type: "button",
+            block_id: "remedios3",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "Remedios",
             },
-            {
-              text: {
-                type: "plain_text",
-                text: "Remedios",
-              },
-              value: "remedios3",
-            },
-          ],
-          action_id: "select-support",
-        },
+            style: "primary",
+            value: "add-queue",
+          },
+        ],
       },
       {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: "Leave Queue",
-        },
-        accessory: {
-          type: "static_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select an item",
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            block_id: "help4",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "HelpInApp",
+            },
+            style: "danger",
+            value: "leave-queue",
           },
-          options: [
-            {
-              text: {
-                type: "plain_text",
-                text: "HelpInApp",
-              },
-              value: "help3",
+          {
+            type: "button",
+            block_id: "remedios4",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "Remedios",
             },
-            {
-              text: {
-                type: "plain_text",
-                text: "Remedios",
-              },
-              value: "remedios3",
-            },
-          ],
-          action_id: "leave-queue",
-        },
+            style: "danger",
+            value: "leave-queue",
+          },
+        ],
       },
       {
         type: "divider",
@@ -154,66 +146,58 @@ let section = () => {
         ],
       },
       {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: "Select a project to owe",
-        },
-        accessory: {
-          type: "static_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select an item",
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            block_id: "help4",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "HelpInApp",
+            },
+            style: "primary",
+            value: "add-queue",
           },
-          options: [
-            {
-              text: {
-                type: "plain_text",
-                text: "HelpInApp",
-              },
-              value: "help4",
+          {
+            type: "button",
+            block_id: "remedios4",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "Remedios",
             },
-            {
-              text: {
-                type: "plain_text",
-                text: "Remedios",
-              },
-              value: "remedios4",
-            },
-          ],
-          action_id: "select-support",
-        },
+            style: "primary",
+            value: "add-queue",
+          },
+        ],
       },
       {
-        type: "section",
-        text: {
-          type: "mrkdwn",
-          text: "Leave Queue",
-        },
-        accessory: {
-          type: "static_select",
-          placeholder: {
-            type: "plain_text",
-            text: "Select an item",
+        type: "actions",
+        elements: [
+          {
+            type: "button",
+            block_id: "help4",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "HelpInApp",
+            },
+            style: "danger",
+            value: "leave-queue",
           },
-          options: [
-            {
-              text: {
-                type: "plain_text",
-                text: "HelpInApp",
-              },
-              value: "help4",
+          {
+            type: "button",
+            block_id: "remedios4",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "Remedios",
             },
-            {
-              text: {
-                type: "plain_text",
-                text: "Remedios",
-              },
-              value: "remedios4",
-            },
-          ],
-          action_id: "leave-queue",
-        },
+            style: "danger",
+            value: "leave-queue",
+          },
+        ],
       },
     ],
   };
@@ -250,7 +234,7 @@ const removeName = (project, name) => {
     });
 
     if (newArray.length < 1) {
-      environments[project].shift()
+      environments[project].shift();
       environments[project].push("empty");
       changed = true;
     } else if (environments[project].length != newArray.length) {
@@ -260,11 +244,11 @@ const removeName = (project, name) => {
   }
 };
 
-app.action("select-support", async ({ body, ack, say }) => {
+app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.actions[0].selected_option.value;
+  let project = body.block_id;
 
   changeName(project, body.user.name);
 
