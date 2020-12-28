@@ -13,7 +13,7 @@ const restartEnviroments = () => {
     help3: ["empty"],
     remedios3: ["empty"],
     help4: ["empty"],
-    remedios4: ["francis", "bea"],
+    remedios4: ["empty"],
   };
 };
 
@@ -212,6 +212,7 @@ const changeName = (project, name) => {
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
+    environments[project].push(":first_place_medal:");
     environments[project].push(name);
     changed = true;
   } else if (
@@ -229,8 +230,8 @@ const removeName = (project, name) => {
       return n != name;
     });
 
-    if (newArray.length < 1) {
-      environments[project].shift();
+    if (newArray.length < 2) {
+      environments[project].slice(0, 2);
       environments[project].push("empty");
       changed = true;
     } else if (environments[project].length != newArray.length) {
