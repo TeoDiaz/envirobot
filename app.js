@@ -246,6 +246,7 @@ const removeName = (project, name) => {
     environments[project].filter((n) => {
       return n != name;
     });
+    console.log(environments)
     changed = true;
   }
 };
