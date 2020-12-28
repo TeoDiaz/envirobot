@@ -13,6 +13,8 @@ let environments = {
   remedios4: ["empty"],
 };
 
+let changed = false
+
 let section = () => {
   return {
     blocks: [
@@ -163,19 +165,35 @@ let section = () => {
         },
       },
       {
-        type: "actions",
-        elements: [
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              emoji: true,
-              text: "Leave Queue",
-            },
-            style: "danger",
-            value: "leave-queue-support-4",
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: "Leave Queue",
+        },
+        accessory: {
+          type: "static_select",
+          placeholder: {
+            type: "plain_text",
+            text: "Select an item",
           },
-        ],
+          options: [
+            {
+              text: {
+                type: "plain_text",
+                text: "HelpInApp",
+              },
+              value: "help4",
+            },
+            {
+              text: {
+                type: "plain_text",
+                text: "Remedios4",
+              },
+              value: "remedios4",
+            },
+          ],
+          action_id: "leave-queue",
+        },
       },
     ],
   };
@@ -194,29 +212,27 @@ const changeName = (project, name) => {
   ) {
     environments[project].shift();
     environments[project].push(name);
+    changed = true
   } else if (
     environments.hasOwnProperty(project) &&
     !environments[project].includes(name)
   ) {
     environments[project].push(name);
+    changed = true
   }
 };
 
-app.action("select-support-3", async ({ body, ack, say }) => {
+app.action("select-support", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
   let project = body.actions[0].selected_option.value;
 
-  let freezed = environments[project].length;
-
   changeName(project, body.user.name);
 
-  if (
-    environments[project].length != freezed ||
-    environments[project][0] != "empty"
-  ) {
+  if (changed) {
     await say(section());
+    changed = false
   }
 });
 
