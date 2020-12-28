@@ -1,12 +1,14 @@
 const { App, ExpressReceiver } = require("@slack/bolt");
 
 // Create a Bolt Receiver
-const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
+const receiver = new ExpressReceiver({
+  signingSecret: process.env.SLACK_SIGNING_SECRET,
+});
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
-  receiver
+  receiver,
 });
 
 let environments = {};
@@ -226,7 +228,7 @@ const removeName = (project, name) => {
     });
 
     if (newArray.length < 1) {
-      environments[project].shift()
+      environments[project].shift();
       environments[project].push("empty");
       changed = true;
     } else if (environments[project].length != newArray.length) {
@@ -239,13 +241,22 @@ const removeName = (project, name) => {
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
   restartEnviroments();
+
   // Other web requests are methods on receiver.router
-receiver.router.post('/slack/events', (req, res) => {
-  // You're working with an express req and res now.
-  res.send('yay!');
-});
+  receiver.router.post("/slack/events", (req, res) => {
+    // You're working with an express req and res now.
+    res.send("worked?");
+  });
+
   // say() sends a message to the channel where the event was triggered
   await say(section());
+});
+
+// Listens to incoming messages that contain "hello"
+app.message("worked?", async ({ message, say }) => {
+
+  // say() sends a message to the channel where the event was triggered
+  await say("WORKED!!!!");
 });
 
 app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
@@ -260,7 +271,6 @@ app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
     changed = false;
     await say(section());
   }
-
 });
 
 app.action({ block_id: "add-queue-4" }, async ({ body, ack, say }) => {
