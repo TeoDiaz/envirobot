@@ -240,7 +240,7 @@ const removeName = (project, name) => {
   }
 };
 
-app.action("add-queue-3", async ({ body, ack, say }) => {
+app.action({block_id: "add-queue-3"}, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -254,7 +254,7 @@ app.action("add-queue-3", async ({ body, ack, say }) => {
   }
 });
 
-app.action("add-queue-4", async ({ body, ack, say }) => {
+app.action({block_id: "add-queue-4"}, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -282,7 +282,7 @@ app.action({block_id: "leave-queue-3"}, async ({ body, ack, say }) => {
   }
 });
 
-app.action("leave-queue-4", async ({ body, ack, say }) => {
+app.action({block_id: "leave-queue-4"}, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
