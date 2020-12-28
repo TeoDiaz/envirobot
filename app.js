@@ -240,7 +240,7 @@ const removeName = (project, name) => {
   }
 };
 
-app.shortcut({ callback_id: /^(add-queue).*/ }, async ({ body, ack, say }) => {
+app.shortcut("add-queue-3", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -254,22 +254,47 @@ app.shortcut({ callback_id: /^(add-queue).*/ }, async ({ body, ack, say }) => {
   }
 });
 
-app.shortcut(
-  { callback_id: /^(leave-queue).*/ },
-  async ({ body, ack, say }) => {
-    // Acknowledge the action
-    await ack();
+app.shortcut("add-queue-4", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
 
-    let project = body.value;
+  let project = body.value;
 
-    removeName(project, body.user.name);
+  changeName(project, body.user.name);
 
-    if (changed) {
-      changed = false;
-      await say(section());
-    }
+  if (changed) {
+    changed = false;
+    await say(section());
   }
-);
+});
+
+app.shortcut("leave-queue-3", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.value;
+
+  removeName(project, body.user.name);
+
+  if (changed) {
+    changed = false;
+    await say(section());
+  }
+});
+
+app.shortcut("leave-queue-4", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.value;
+
+  removeName(project, body.user.name);
+
+  if (changed) {
+    changed = false;
+    await say(section());
+  }
+});
 
 (async () => {
   // Start your app
