@@ -6,11 +6,15 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
-let environments = {
-  help3: ["empty"],
-  remedios3: ["empty"],
-  help4: ["empty"],
-  remedios4: ["francis", "beatriz"],
+let environments = {};
+
+const restartEnviroments = () => {
+  environments = {
+    help3: ["empty"],
+    remedios3: ["empty"],
+    help4: ["empty"],
+    remedios4: ["francis", "bea"],
+  };
 };
 
 let changed = false;
@@ -109,7 +113,7 @@ let section = () => {
             {
               text: {
                 type: "plain_text",
-                text: "Remedios3",
+                text: "Remedios",
               },
               value: "remedios3",
             },
@@ -172,7 +176,7 @@ let section = () => {
             {
               text: {
                 type: "plain_text",
-                text: "Remedios4",
+                text: "Remedios",
               },
               value: "remedios4",
             },
@@ -217,6 +221,7 @@ let section = () => {
 
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
+  restartEnviroments();
   // say() sends a message to the channel where the event was triggered
   await say(section());
 });
@@ -245,11 +250,12 @@ const removeName = (project, name) => {
     });
 
     if (newArray.length < 1) {
+      environments[project].shift()
       environments[project].push("empty");
-      change = true;
+      changed = true;
     } else if (environments[project].length != newArray.length) {
       environments[project] = newArray;
-      change = true;
+      changed = true;
     }
   }
 };
