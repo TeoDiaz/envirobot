@@ -240,11 +240,11 @@ const removeName = (project, name) => {
   }
 };
 
-app.action({block_id: "add-queue-3"}, async ({ body, ack, say }) => {
+app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.value;
+  let project = body.actions[0].value;
 
   changeName(project, body.user.name);
 
@@ -254,11 +254,11 @@ app.action({block_id: "add-queue-3"}, async ({ body, ack, say }) => {
   }
 });
 
-app.action({block_id: "add-queue-4"}, async ({ body, ack, say }) => {
+app.action({ block_id: "add-queue-4" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.value;
+  let project = body.actions[0].value;
 
   changeName(project, body.user.name);
 
@@ -268,11 +268,11 @@ app.action({block_id: "add-queue-4"}, async ({ body, ack, say }) => {
   }
 });
 
-app.action({block_id: "leave-queue-3"}, async ({ body, ack, say }) => {
+app.action({ block_id: "leave-queue-3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.value;
+  let project = body.actions[0].value;
 
   removeName(project, body.user.name);
 
@@ -282,11 +282,11 @@ app.action({block_id: "leave-queue-3"}, async ({ body, ack, say }) => {
   }
 });
 
-app.action({block_id: "leave-queue-4"}, async ({ body, ack, say }) => {
+app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.value;
+  let project = body.actions[0].value;
 
   removeName(project, body.user.name);
 
