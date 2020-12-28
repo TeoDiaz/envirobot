@@ -10,7 +10,7 @@ let environments = {
   help3: ["empty"],
   remedios3: ["empty"],
   help4: ["empty"],
-  remedios4: ["empty"],
+  remedios4: ["francis", "beatriz"],
 };
 
 let changed = false;
@@ -244,9 +244,11 @@ const removeName = (project, name) => {
     environments[project].includes(name)
   ) {
     environments[project].filter((n) => {
+      console.log(n)
+      console.log(name)
       return n != name;
     });
-    console.log(environments)
+    console.log(environments);
     changed = true;
   }
 };
