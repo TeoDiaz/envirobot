@@ -61,10 +61,10 @@ let section = () => {
       },
       {
         type: "actions",
+        block_id: "add-queue",
         elements: [
           {
             type: "button",
-            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
@@ -75,7 +75,6 @@ let section = () => {
           },
           {
             type: "button",
-            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
@@ -88,10 +87,10 @@ let section = () => {
       },
       {
         type: "actions",
+        block_id: "leave-queue",
         elements: [
           {
             type: "button",
-            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
@@ -102,7 +101,6 @@ let section = () => {
           },
           {
             type: "button",
-            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
@@ -147,10 +145,10 @@ let section = () => {
       },
       {
         type: "actions",
+        block_id: "add-queue",
         elements: [
           {
             type: "button",
-            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
@@ -161,23 +159,22 @@ let section = () => {
           },
           {
             type: "button",
-            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "Remedios",
             },
             style: "primary",
-            value: "remedios3",
+            value: "remedios4",
           },
         ],
       },
       {
         type: "actions",
+        block_id: "leave-queue",
         elements: [
           {
             type: "button",
-            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
@@ -188,7 +185,6 @@ let section = () => {
           },
           {
             type: "button",
-            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
