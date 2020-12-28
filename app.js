@@ -1,4 +1,4 @@
-const { App } = require("@slack/bolt");
+const { App, WorkflowStep } = require("@slack/bolt");
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
