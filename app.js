@@ -61,7 +61,7 @@ let section = () => {
       },
       {
         type: "actions",
-        action_id: "add-queue-3",
+        block_id: "add-queue-3",
         elements: [
           {
             type: "button",
@@ -87,7 +87,7 @@ let section = () => {
       },
       {
         type: "actions",
-        action_id: "leave-queue-3",
+        block_id: "leave-queue-3",
         elements: [
           {
             type: "button",
@@ -145,7 +145,7 @@ let section = () => {
       },
       {
         type: "actions",
-        action_id: "add-queue-4",
+        block_id: "add-queue-4",
         elements: [
           {
             type: "button",
@@ -171,7 +171,7 @@ let section = () => {
       },
       {
         type: "actions",
-        action_id: "leave-queue-4",
+        block_id: "leave-queue-4",
         elements: [
           {
             type: "button",
