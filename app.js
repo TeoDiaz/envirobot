@@ -240,7 +240,7 @@ const removeName = (project, name) => {
   }
 };
 
-app.shortcut(/^(add-queue).*/, async ({ body, ack, say }) => {
+app.shortcut("add-queue-3", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -254,7 +254,35 @@ app.shortcut(/^(add-queue).*/, async ({ body, ack, say }) => {
   }
 });
 
-app.shortcut(/^(leave-queue).*/, async ({ body, ack, say }) => {
+app.shortcut("add-queue-4", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.value;
+
+  changeName(project, body.user.name);
+
+  if (changed) {
+    changed = false;
+    await say(section());
+  }
+});
+
+app.shortcut("leave-queue-3", async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.value;
+
+  removeName(project, body.user.name);
+
+  if (changed) {
+    changed = false;
+    await say(section());
+  }
+});
+
+app.shortcut("leave-queue-4", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
