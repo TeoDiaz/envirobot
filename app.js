@@ -236,16 +236,14 @@ const removeName = (project, name) => {
   }
 };
 
-// Other web requests are methods on receiver.router
+// Listens to incoming messages that contain "hello"
+app.message("start", async ({ message, say }) => {
+  restartEnviroments();
+  // Other web requests are methods on receiver.router
 receiver.router.post('/slack/events', (req, res) => {
   // You're working with an express req and res now.
   res.send('yay!');
 });
-
-
-// Listens to incoming messages that contain "hello"
-app.message("start", async ({ message, say }) => {
-  restartEnviroments();
   // say() sends a message to the channel where the event was triggered
   await say(section());
 });
