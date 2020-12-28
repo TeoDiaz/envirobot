@@ -207,7 +207,7 @@ let section = () => {
             {
               text: {
                 type: "plain_text",
-                text: "Remedios4",
+                text: "Remedios",
               },
               value: "remedios4",
             },
