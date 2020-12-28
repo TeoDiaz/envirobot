@@ -240,11 +240,17 @@ const changeName = (project, name) => {
 
 const removeName = (project, name) => {
   if (environments.hasOwnProperty(project)) {
-    environments[project] = environments[project].filter((n) => {
+    let newArray = environments[project].filter((n) => {
       console.log(n);
-      console.log(name)
+      console.log(name);
       return n != name;
     });
+    if(newArray.length < 1){
+      environments[project].push("empty")
+    }else{
+      environments[project] = newArray
+    }
+
     console.log(environments);
     changed = true;
   }
@@ -271,7 +277,7 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   let project = body.actions[0].selected_option.value;
 
   removeName(project, body.user.name);
-  
+
   if (changed) {
     changed = false;
     await say(section());
