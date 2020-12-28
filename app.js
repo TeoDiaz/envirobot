@@ -240,7 +240,7 @@ const removeName = (project, name) => {
   }
 };
 
-app.action(/^(add-queue).*/, async ({ body, ack, say }) => {
+app.shortcut(/^(add-queue).*/, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -254,7 +254,7 @@ app.action(/^(add-queue).*/, async ({ body, ack, say }) => {
   }
 });
 
-app.action(/^(leave-queue).*/, async ({ body, ack, say }) => {
+app.shortcut(/^(leave-queue).*/, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
