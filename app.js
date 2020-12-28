@@ -223,6 +223,7 @@ const removeName = (project, name) => {
     });
 
     if (newArray.length < 1) {
+      environments[project].shift()
       environments[project].push("empty");
       changed = true;
     } else if (environments[project].length != newArray.length) {
@@ -251,6 +252,8 @@ app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
     changed = false;
     await say(section());
   }
+
+  await say("SOMETHING")
 });
 
 app.action({ block_id: "add-queue-4" }, async ({ body, ack, say }) => {
@@ -292,22 +295,6 @@ app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
   if (changed) {
     changed = false;
     await say(section());
-  }
-});
-
-let now = 1609197679;
-
-app.message('wake me up', async ({ message, client }) => {
-  try {
-    // Call chat.scheduleMessage with the built-in client
-    const result = await client.chat.scheduleMessage({
-      channel: message.channel,
-      post_at: now,
-      text: 'Summer has come and passed'
-    });
-  }
-  catch (error) {
-    console.error(error);
   }
 });
 
