@@ -104,14 +104,14 @@ let section = () => {
                 type: "plain_text",
                 text: "HelpInApp",
               },
-              value: "help4",
+              value: "help3",
             },
             {
               text: {
                 type: "plain_text",
                 text: "Remedios4",
               },
-              value: "remedios4",
+              value: "remedios3",
             },
           ],
           action_id: "leave-queue",
@@ -269,7 +269,7 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   await ack();
 
   let project = body.actions[0].selected_option.value;
-  
+
   removeName(project, body.user.name);
   if (changed) {
     changed = false;
