@@ -1,9 +1,12 @@
-const { App, WorkflowStep } = require("@slack/bolt");
+const { App, ExpressReceiver } = require("@slack/bolt");
+
+// Create a Bolt Receiver
+const receiver = new ExpressReceiver({ signingSecret: process.env.SLACK_SIGNING_SECRET });
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
+  receiver
 });
 
 let environments = {};
@@ -233,51 +236,12 @@ const removeName = (project, name) => {
   }
 };
 
-
-const ws = new WorkflowStep('add_task', {
-  edit: async ({ ack, step, configure }) => {
-    await ack();
-
-    const blocks = [
-      {
-        type: 'input',
-        block_id: 'task_name_input',
-        element: {
-          type: 'plain_text_input',
-          action_id: 'name',
-          placeholder: {
-            type: 'plain_text',
-            text: 'Add a task name',
-          },
-        },
-        label: {
-          type: 'plain_text',
-          text: 'Task name',
-        },
-      },
-      {
-        type: 'input',
-        block_id: 'task_description_input',
-        element: {
-          type: 'plain_text_input',
-          action_id: 'description',
-          placeholder: {
-            type: 'plain_text',
-            text: 'Add a task description',
-          },
-        },
-        label: {
-          type: 'plain_text',
-          text: 'Task description',
-        },
-      },
-    ];
-
-    await configure({ blocks });
-  },
-  save: async ({ ack, step, update }) => {},
-  execute: async ({ step, complete, fail }) => {},
+// Other web requests are methods on receiver.router
+receiver.router.post('/slack/events', (req, res) => {
+  // You're working with an express req and res now.
+  res.send('yay!');
 });
+
 
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
@@ -298,7 +262,7 @@ app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
     changed = false;
     await say(section());
   }
-  app.step(ws);
+
 });
 
 app.action({ block_id: "add-queue-4" }, async ({ body, ack, say }) => {
