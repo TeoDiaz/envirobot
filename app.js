@@ -64,7 +64,7 @@ let section = () => {
         elements: [
           {
             type: "button",
-            block_id: "help3",
+            action_id: "help3",
             text: {
               type: "plain_text",
               emoji: true,
@@ -75,7 +75,7 @@ let section = () => {
           },
           {
             type: "button",
-            block_id: "remedios3",
+            action_id: "remedios3",
             text: {
               type: "plain_text",
               emoji: true,
@@ -91,7 +91,7 @@ let section = () => {
         elements: [
           {
             type: "button",
-            block_id: "help4",
+            action_id: "help3",
             text: {
               type: "plain_text",
               emoji: true,
@@ -102,7 +102,7 @@ let section = () => {
           },
           {
             type: "button",
-            block_id: "remedios4",
+            action_id: "remedios3",
             text: {
               type: "plain_text",
               emoji: true,
@@ -150,7 +150,7 @@ let section = () => {
         elements: [
           {
             type: "button",
-            block_id: "help4",
+            action_id: "help4",
             text: {
               type: "plain_text",
               emoji: true,
@@ -161,7 +161,7 @@ let section = () => {
           },
           {
             type: "button",
-            block_id: "remedios4",
+            action_id: "remedios4",
             text: {
               type: "plain_text",
               emoji: true,
@@ -177,7 +177,7 @@ let section = () => {
         elements: [
           {
             type: "button",
-            block_id: "help4",
+            action_id: "help4",
             text: {
               type: "plain_text",
               emoji: true,
@@ -188,7 +188,7 @@ let section = () => {
           },
           {
             type: "button",
-            block_id: "remedios4",
+            action_id: "remedios4",
             text: {
               type: "plain_text",
               emoji: true,
@@ -248,7 +248,7 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.block_id;
+  let project = body.action_id;
 
   changeName(project, body.user.name);
 
