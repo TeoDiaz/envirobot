@@ -241,18 +241,16 @@ const changeName = (project, name) => {
 const removeName = (project, name) => {
   if (environments.hasOwnProperty(project)) {
     let newArray = environments[project].filter((n) => {
-      console.log(n);
-      console.log(name);
       return n != name;
     });
-    if(newArray.length < 1){
-      environments[project].push("empty")
-    }else{
-      environments[project] = newArray
-    }
 
-    console.log(environments);
-    changed = true;
+    if (newArray.length < 1) {
+      environments[project].push("empty");
+      change = true;
+    } else if (environments[project].length != newArray.length) {
+      environments[project] = newArray;
+      change = true;
+    }
   }
 };
 
