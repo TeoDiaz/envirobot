@@ -252,8 +252,7 @@ app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
     changed = false;
     await say(section());
   }
-
-  await say("SOMETHING")
+  app.step(ws);
 });
 
 app.action({ block_id: "add-queue-4" }, async ({ body, ack, say }) => {
@@ -296,6 +295,51 @@ app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
     changed = false;
     await say(section());
   }
+});
+
+const ws = new WorkflowStep('add_task', {
+  edit: async ({ ack, step, configure }) => {
+    await ack();
+
+    const blocks = [
+      {
+        type: 'input',
+        block_id: 'task_name_input',
+        element: {
+          type: 'plain_text_input',
+          action_id: 'name',
+          placeholder: {
+            type: 'plain_text',
+            text: 'Add a task name',
+          },
+        },
+        label: {
+          type: 'plain_text',
+          text: 'Task name',
+        },
+      },
+      {
+        type: 'input',
+        block_id: 'task_description_input',
+        element: {
+          type: 'plain_text_input',
+          action_id: 'description',
+          placeholder: {
+            type: 'plain_text',
+            text: 'Add a task description',
+          },
+        },
+        label: {
+          type: 'plain_text',
+          text: 'Task description',
+        },
+      },
+    ];
+
+    await configure({ blocks });
+  },
+  save: async ({ ack, step, update }) => {},
+  execute: async ({ step, complete, fail }) => {},
 });
 
 (async () => {
