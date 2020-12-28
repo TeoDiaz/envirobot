@@ -119,7 +119,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help4[0],
+            text: environments.help4.join(" | "),
           },
           {
             type: "mrkdwn",
@@ -127,7 +127,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.remedios4[0],
+            text: environments.remedios4.join(" | "),
           },
         ],
       },
@@ -208,11 +208,14 @@ app.action("select-support-3", async ({ body, ack, say }) => {
 
   let project = body.actions[0].selected_option.value;
 
-  let freezed = environments[project];
+  let freezed = environments[project].length;
 
   changeName(project, body.user.name);
 
-  if (environments[project] != freezed) {
+  if (
+    environments[project].length != freezed ||
+    environments[project][0] != "empty"
+  ) {
     await say(section());
   }
 });
@@ -220,6 +223,7 @@ app.action("select-support-3", async ({ body, ack, say }) => {
 app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
+  await say("Pushed leave queue")
 });
 
 (async () => {
