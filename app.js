@@ -61,7 +61,7 @@ let section = () => {
       },
       {
         type: "actions",
-        block_id: "add-queue",
+        block_id: "add-queue-3",
         elements: [
           {
             type: "button",
@@ -87,7 +87,7 @@ let section = () => {
       },
       {
         type: "actions",
-        block_id: "leave-queue",
+        block_id: "leave-queue-3",
         elements: [
           {
             type: "button",
@@ -145,7 +145,7 @@ let section = () => {
       },
       {
         type: "actions",
-        block_id: "add-queue",
+        block_id: "add-queue-4",
         elements: [
           {
             type: "button",
@@ -171,7 +171,7 @@ let section = () => {
       },
       {
         type: "actions",
-        block_id: "leave-queue",
+        block_id: "leave-queue-4",
         elements: [
           {
             type: "button",
@@ -240,7 +240,7 @@ const removeName = (project, name) => {
   }
 };
 
-app.action("add-queue", async ({ body, ack, say }) => {
+app.action(/^(add-queue).*/, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -254,7 +254,7 @@ app.action("add-queue", async ({ body, ack, say }) => {
   }
 });
 
-app.action("leave-queue", async ({ body, ack, say }) => {
+app.action(/^(leave-queue).*/, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
