@@ -267,6 +267,9 @@ app.action("select-support", async ({ body, ack, say }) => {
 app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
+
+  let project = body.actions[0].selected_option.value;
+  
   removeName(project, body.user.name);
   if (changed) {
     changed = false;
