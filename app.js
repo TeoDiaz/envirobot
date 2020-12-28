@@ -109,7 +109,7 @@ let section = () => {
             {
               text: {
                 type: "plain_text",
-                text: "Remedios4",
+                text: "Remedios3",
               },
               value: "remedios3",
             },
@@ -239,12 +239,9 @@ const changeName = (project, name) => {
 };
 
 const removeName = (project, name) => {
-  if (
-    environments.hasOwnProperty(project) &&
-    environments[project].includes(name)
-  ) {
-    environments[project].filter((n) => {
-      console.log(n)
+  if (environments.hasOwnProperty(project)) {
+    environments[project] = environments[project].filter((n) => {
+      console.log(n);
       console.log(name)
       return n != name;
     });
@@ -274,6 +271,7 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   let project = body.actions[0].selected_option.value;
 
   removeName(project, body.user.name);
+  
   if (changed) {
     changed = false;
     await say(section());
