@@ -268,7 +268,7 @@ app.action("add-queue-4", async ({ body, ack, say }) => {
   }
 });
 
-app.action("leave-queue-3", async ({ body, ack, say }) => {
+app.action({block_id: "leave-queue-3"}, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
