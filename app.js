@@ -244,7 +244,7 @@ const removeName = (project, name) => {
   }
 };
 
-app.action("leave-queue", async ({ body, ack, say }) => {
+app.action("add-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -262,7 +262,7 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.actions[0].selected_option.value;
+  let project = body.action_id;
 
   removeName(project, body.user.name);
 
