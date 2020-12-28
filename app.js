@@ -83,23 +83,39 @@ let section = () => {
               value: "remedios3",
             },
           ],
-          action_id: "select-support-3",
+          action_id: "select-support",
         },
       },
       {
-        type: "actions",
-        elements: [
-          {
-            type: "button",
-            text: {
-              type: "plain_text",
-              emoji: true,
-              text: "Leave Queue",
-            },
-            style: "danger",
-            value: "leave-queue-support-3",
+        type: "section",
+        text: {
+          type: "mrkdwn",
+          text: "Leave Queue",
+        },
+        accessory: {
+          type: "static_select",
+          placeholder: {
+            type: "plain_text",
+            text: "Select an item",
           },
-        ],
+          options: [
+            {
+              text: {
+                type: "plain_text",
+                text: "HelpInApp",
+              },
+              value: "help4",
+            },
+            {
+              text: {
+                type: "plain_text",
+                text: "Remedios4",
+              },
+              value: "remedios4",
+            },
+          ],
+          action_id: "leave-queue",
+        },
       },
       {
         type: "divider",
@@ -161,7 +177,7 @@ let section = () => {
               value: "remedios4",
             },
           ],
-          action_id: "select-support-4",
+          action_id: "select-support",
         },
       },
       {
