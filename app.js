@@ -13,7 +13,7 @@ let environments = {
   remedios4: ["empty"],
 };
 
-let changed = false
+let changed = false;
 
 let section = () => {
   return {
@@ -212,13 +212,15 @@ const changeName = (project, name) => {
   ) {
     environments[project].shift();
     environments[project].push(name);
-    changed = true
+    console.log(environments);
+    changed = true;
   } else if (
     environments.hasOwnProperty(project) &&
     !environments[project].includes(name)
   ) {
     environments[project].push(name);
-    changed = true
+    console.log(environments);
+    changed = true;
   }
 };
 
@@ -231,15 +233,15 @@ app.action("select-support", async ({ body, ack, say }) => {
   changeName(project, body.user.name);
 
   if (changed) {
+    changed = false;
     await say(section());
-    changed = false
   }
 });
 
 app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
-  await say("Pushed leave queue")
+  await say("Pushed leave queue");
 });
 
 (async () => {
