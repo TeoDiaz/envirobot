@@ -8,6 +8,8 @@ const app = new App({
 
 let environments = {};
 
+let changed = false;
+
 const restartEnviroments = () => {
   environments = {
     help3: ["empty"],
@@ -16,8 +18,6 @@ const restartEnviroments = () => {
     remedios4: ["empty"],
   };
 };
-
-let changed = false;
 
 let section = () => {
   return {
@@ -199,20 +199,12 @@ let section = () => {
   };
 };
 
-// Listens to incoming messages that contain "hello"
-app.message("start", async ({ message, say }) => {
-  restartEnviroments();
-  // say() sends a message to the channel where the event was triggered
-  await say(section());
-});
-
 const changeName = (project, name) => {
   if (
     environments.hasOwnProperty(project) &&
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
-    environments[project].push(":first_place_medal:");
     environments[project].push(name);
     changed = true;
   } else if (
@@ -230,8 +222,7 @@ const removeName = (project, name) => {
       return n != name;
     });
 
-    if (newArray.length < 2) {
-      environments[project].slice(0, 2);
+    if (newArray.length < 1) {
       environments[project].push("empty");
       changed = true;
     } else if (environments[project].length != newArray.length) {
@@ -240,6 +231,13 @@ const removeName = (project, name) => {
     }
   }
 };
+
+// Listens to incoming messages that contain "hello"
+app.message("start", async ({ message, say }) => {
+  restartEnviroments();
+  // say() sends a message to the channel where the event was triggered
+  await say(section());
+});
 
 app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
@@ -294,6 +292,22 @@ app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
   if (changed) {
     changed = false;
     await say(section());
+  }
+});
+
+let now = 1609197679;
+
+app.message('wake me up', async ({ message, client }) => {
+  try {
+    // Call chat.scheduleMessage with the built-in client
+    const result = await client.chat.scheduleMessage({
+      channel: message.channel,
+      post_at: now,
+      text: 'Summer has come and passed'
+    });
+  }
+  catch (error) {
+    console.error(error);
   }
 });
 
