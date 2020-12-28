@@ -8,7 +8,7 @@ const app = new App({
 
 let environments = {
   help3: ["empty"],
-  remedios3: ["francis", "rebeca"],
+  remedios3: ["empty"],
   help4: ["empty"],
   remedios4: ["empty"],
 };
@@ -228,14 +228,24 @@ const changeName = (project, name) => {
   ) {
     environments[project].shift();
     environments[project].push(name);
-    console.log(environments);
     changed = true;
   } else if (
     environments.hasOwnProperty(project) &&
     !environments[project].includes(name)
   ) {
     environments[project].push(name);
-    console.log(environments);
+    changed = true;
+  }
+};
+
+const removeName = (project, name) => {
+  if (
+    environments.hasOwnProperty(project) &&
+    environments[project].includes(name)
+  ) {
+    environments[project].filter((n) => {
+      return n != name;
+    });
     changed = true;
   }
 };
@@ -257,7 +267,11 @@ app.action("select-support", async ({ body, ack, say }) => {
 app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
-  await say("Pushed leave queue");
+  removeName(project, body.user.name);
+  if (changed) {
+    changed = false;
+    await say(section());
+  }
 });
 
 (async () => {
