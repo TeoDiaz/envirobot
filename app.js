@@ -64,25 +64,25 @@ let section = () => {
         elements: [
           {
             type: "button",
-            action_id: "help3",
+            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "HelpInApp",
             },
             style: "primary",
-            value: "add-queue",
+            value: "help3",
           },
           {
             type: "button",
-            action_id: "remedios3",
+            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "Remedios",
             },
             style: "primary",
-            value: "add-queue",
+            value: "remedios3",
           },
         ],
       },
@@ -91,25 +91,25 @@ let section = () => {
         elements: [
           {
             type: "button",
-            action_id: "help3",
+            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "HelpInApp",
             },
             style: "danger",
-            value: "leave-queue",
+            value: "help3",
           },
           {
             type: "button",
-            action_id: "remedios3",
+            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "Remedios",
             },
             style: "danger",
-            value: "leave-queue",
+            value: "remedios3",
           },
         ],
       },
@@ -150,25 +150,25 @@ let section = () => {
         elements: [
           {
             type: "button",
-            action_id: "help4",
+            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "HelpInApp",
             },
             style: "primary",
-            value: "add-queue",
+            value: "help4",
           },
           {
             type: "button",
-            action_id: "remedios4",
+            action_id: "add-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "Remedios",
             },
             style: "primary",
-            value: "add-queue",
+            value: "remedios3",
           },
         ],
       },
@@ -177,25 +177,25 @@ let section = () => {
         elements: [
           {
             type: "button",
-            action_id: "help4",
+            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "HelpInApp",
             },
             style: "danger",
-            value: "leave-queue",
+            value: "help4",
           },
           {
             type: "button",
-            action_id: "remedios4",
+            action_id: "leave-queue",
             text: {
               type: "plain_text",
               emoji: true,
               text: "Remedios",
             },
             style: "danger",
-            value: "leave-queue",
+            value: "remedios4",
           },
         ],
       },
@@ -248,7 +248,7 @@ app.action("add-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.action_id;
+  let project = body.value;
 
   changeName(project, body.user.name);
 
@@ -262,7 +262,7 @@ app.action("leave-queue", async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
-  let project = body.action_id;
+  let project = body.value;
 
   removeName(project, body.user.name);
 
