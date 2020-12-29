@@ -20,7 +20,7 @@ let timeout;
 
 const restartEnviroments = () => {
   environments = {
-    help3: ["empty"],
+    help3: ["francis"],
     remedios3: ["empty"],
     help4: ["empty"],
     remedios4: ["empty"],
