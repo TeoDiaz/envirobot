@@ -258,19 +258,21 @@ const sendMessage = async (message) => {
 
 const startTimeout = (project, body) => {
   if (body.user.name == environments[project][0]) {
-    user = environments[project][0];
+    user_name = environments[project][0];
     let user_id;
 
     Object.values(users).some((key) => {
-      if (key["name"] == user) {
+      if (key["name"] == user_name) {
         user_id = key.id;
       }
     });
 
+    console.log(users)
+
     let timeout = setTimeout(function () {
       let message = {
         text: "Hey! Are you still using the environment?",
-        channel: body.channgel.id,
+        channel: body.channel.id,
       };
       sendMessage(message);
     }, 3000);
@@ -301,10 +303,10 @@ app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
 
   addUser(project, body.user);
 
-  startTimeout(project, body);
-
   if (changed) {
     changed = false;
+    startTimeout(project, body);
+
     await say(section());
   }
 });
