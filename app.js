@@ -228,10 +228,10 @@ const addUser = (project, user) => {
   }
 };
 
-const removeUser = (project, user) => {
+const removeUser = (project, name) => {
   if (environments.hasOwnProperty(project)) {
     let newArray = environments[project].filter((n) => {
-      return n != user.name;
+      return n != name;
     });
 
     if (newArray.length < 1) {
