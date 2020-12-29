@@ -12,6 +12,7 @@ const token = process.env.SLACK_BOT_TOKEN;
 const web = new WebClient(token);
 
 let environments = {};
+let users = { 1234: { name: "francis", id: "1234" } };
 
 let changed = false;
 
@@ -19,7 +20,7 @@ let timeout;
 
 const restartEnviroments = () => {
   environments = {
-    help3: ["francis"],
+    help3: ["empty"],
     remedios3: ["empty"],
     help4: ["empty"],
     remedios4: ["empty"],
@@ -208,27 +209,29 @@ let section = () => {
   };
 };
 
-const changeName = (project, name) => {
+const addUser = (project, user) => {
+  users[user.id] = user;
+
   if (
     environments.hasOwnProperty(project) &&
     environments[project][0] == "empty"
   ) {
     environments[project].shift();
-    environments[project].push(name);
+    environments[project].push(user.name);
     changed = true;
   } else if (
     environments.hasOwnProperty(project) &&
-    !environments[project].includes(name)
+    !environments[project].includes(user.name)
   ) {
-    environments[project].push(name);
+    environments[project].push(user.name);
     changed = true;
   }
 };
 
-const removeName = (project, name) => {
+const removeUser = (project, user) => {
   if (environments.hasOwnProperty(project)) {
     let newArray = environments[project].filter((n) => {
-      return n != name;
+      return n != user.name;
     });
 
     if (newArray.length < 1) {
@@ -262,13 +265,13 @@ app.message("start", async ({ message, say }) => {
 });
 
 app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
-  console.log(body)
+  console.log(body);
   // Acknowledge the action
   await ack();
 
   let project = body.actions[0].value;
 
-  changeName(project, body.user.name);
+  addUser(project, body.user);
 
   if (changed) {
     changed = false;
@@ -276,12 +279,21 @@ app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
   }
 
   if (environments[project].length > 1) {
-    timeout = setTimeout(function () {
+    user = environments[project][0];
+    let user_id;
+
+    Object.values(obj).some((key) => {
+      if (key["name"] == user) {
+        user_id = key.id;
+      }
+    });
+
+    user_id = user.timeout = setTimeout(function () {
       let message = {
         text: "Hey! Are you still using the environment?",
-        channel: body.user.id
-      }
-     sendMessage(message)
+        channel: body.channel.id,
+      };
+      sendMessage(message);
     }, 3000);
   }
 });
@@ -292,7 +304,7 @@ app.action({ action_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
 
   let project = body.actions[0].value;
 
-  changeName(project, body.user.name);
+  addUser(project, body.user);
 
   if (changed) {
     changed = false;
@@ -306,7 +318,7 @@ app.action({ action_id: "add-queue-help4" }, async ({ body, ack, say }) => {
 
   let project = body.actions[0].value;
 
-  changeName(project, body.user.name);
+  addUser(project, body.user);
 
   if (changed) {
     changed = false;
@@ -314,19 +326,22 @@ app.action({ action_id: "add-queue-help4" }, async ({ body, ack, say }) => {
   }
 });
 
-app.action({ action_id: "add-queue-remmedios4" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { action_id: "add-queue-remmedios4" },
+  async ({ body, ack, say }) => {
+    // Acknowledge the action
+    await ack();
 
-  let project = body.actions[0].value;
+    let project = body.actions[0].value;
 
-  changeName(project, body.user.name);
+    addUser(project, body.user);
 
-  if (changed) {
-    changed = false;
-    await say(section());
+    if (changed) {
+      changed = false;
+      await say(section());
+    }
   }
-});
+);
 
 app.action({ block_id: "leave-queue-3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
@@ -334,7 +349,7 @@ app.action({ block_id: "leave-queue-3" }, async ({ body, ack, say }) => {
 
   let project = body.actions[0].value;
 
-  removeName(project, body.user.name);
+  removeUser(project, body.user.name);
 
   if (changed) {
     changed = false;
@@ -348,7 +363,7 @@ app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
 
   let project = body.actions[0].value;
 
-  removeName(project, body.user.name);
+  removeUser(project, body.user.name);
 
   if (changed) {
     changed = false;
