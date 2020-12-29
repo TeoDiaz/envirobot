@@ -279,6 +279,7 @@ const startTimeout = (project, body) => {
 };
 
 const stopTimeout = (project, name) => {
+  console.log(timeouts)
   if (timeouts[project].name == name) {
     clearInterval(timeouts[project].time);
   }
