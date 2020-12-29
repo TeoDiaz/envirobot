@@ -16,11 +16,11 @@ let users = { 1234: { name: "francis", id: "1234" } };
 
 let changed = false;
 
-let timeout;
+let timeouts = {};
 
 const restartEnviroments = () => {
   environments = {
-    help3: ["francis"],
+    help3: ["empty"],
     remedios3: ["empty"],
     help4: ["empty"],
     remedios4: ["empty"],
@@ -256,6 +256,35 @@ const sendMessage = async (message) => {
     .catch((err) => console.log(err));
 };
 
+const startTimeout = (project, body) => {
+  if (body.user.name == environments[project][0]) {
+    user = environments[project][0];
+    let user_id;
+
+    Object.values(users).some((key) => {
+      if (key["name"] == user) {
+        user_id = key.id;
+      }
+    });
+
+    let timeout = setTimeout(function () {
+      let message = {
+        text: "Hey! Are you still using the environment?",
+        channel: body.channgel.id,
+      };
+      sendMessage(message);
+    }, 3000);
+
+    timeouts[project] = { user: body.user.name, time: timeout };
+  }
+};
+
+const stopTimeout = (project, name) => {
+  if (timeouts[project].name == name) {
+    clearInterval(timeouts[project].time);
+  }
+};
+
 // Listens to incoming messages that contain "hello"
 app.message("start", async ({ message, say }) => {
   restartEnviroments();
@@ -272,28 +301,11 @@ app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
 
   addUser(project, body.user);
 
+  startTimeout(project, body);
+
   if (changed) {
     changed = false;
     await say(section());
-  }
-
-  if (environments[project].length > 1) {
-    user = environments[project][0];
-    let user_id;
-
-    Object.values(users).some((key) => {
-      if (key["name"] == user) {
-        user_id = key.id;
-      }
-    });
-
-    setTimeout(function () {
-      let message = {
-        text: "Hey! Are you still using the environment?",
-        channel: body.channel.id,
-      };
-      sendMessage(message);
-    }, 5000);
   }
 });
 
@@ -349,6 +361,8 @@ app.action({ block_id: "leave-queue-3" }, async ({ body, ack, say }) => {
   let project = body.actions[0].value;
 
   removeUser(project, body.user.name);
+
+  stopTimeout(project, body.user.name);
 
   if (changed) {
     changed = false;
