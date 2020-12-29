@@ -265,7 +265,6 @@ app.message("start", async ({ message, say }) => {
 });
 
 app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
-  console.log(body);
   // Acknowledge the action
   await ack();
 
@@ -288,13 +287,13 @@ app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
       }
     });
 
-    user_id = user.timeout = setTimeout(function () {
+    timmeout = setTimeout(function () {
       let message = {
         text: "Hey! Are you still using the environment?",
         channel: body.channel.id,
       };
       sendMessage(message);
-    }, 3000);
+    }, 2000);
   }
 });
 
