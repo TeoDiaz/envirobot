@@ -12,7 +12,7 @@ const token = process.env.SLACK_BOT_TOKEN;
 const web = new WebClient(token);
 
 let environments = {};
-let users = { 1234: { name: "francis", id: "1234" } };
+let users = {};
 
 let changed = false;
 
@@ -252,7 +252,6 @@ const sendMessage = async (message) => {
       channel: message.channel,
       as_user: true,
     })
-    .then((res) => console.log(res))
     .catch((err) => console.log(err));
 };
 
@@ -267,15 +266,13 @@ const startTimeout = (project, body) => {
       }
     });
 
-    console.log(users)
-
     let timeout = setTimeout(function () {
       let message = {
         text: "Hey! Are you still using the environment?",
         channel: body.channel.id,
       };
       sendMessage(message);
-    }, 3000);
+    }, 6000);
 
     timeouts[project] = { user: body.user.name, time: timeout };
   }
