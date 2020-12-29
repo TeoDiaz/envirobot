@@ -1,4 +1,5 @@
 const { App } = require("@slack/bolt");
+const { WebClient } = require("@slack/web-api");
 
 // Initializes your app with your bot token and signing secret
 const app = new App({
@@ -6,9 +7,15 @@ const app = new App({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
 });
 
+const token = process.env.SLACK_BOT_TOKEN;
+
+const web = new WebClient(token);
+
 let environments = {};
 
 let changed = false;
+
+let timeout;
 
 const restartEnviroments = () => {
   environments = {
@@ -235,8 +242,19 @@ const removeName = (project, name) => {
   }
 };
 
+export const sendMessage = async (message) => {
+  await web.chat
+    .postMessage({
+      text: message.text,
+      channel: message.channel,
+      as_user: true,
+    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
+
 // Listens to incoming messages that contain "hello"
-app.message("start", async ({ message, say }) => {
+app.command("/envirobot", async ({ message, say }) => {
   restartEnviroments();
 
   // say() sends a message to the channel where the event was triggered
@@ -244,6 +262,7 @@ app.message("start", async ({ message, say }) => {
 });
 
 app.action({ block_id: "add-queue-help3" }, async ({ body, ack, say }) => {
+  console.log(body)
   // Acknowledge the action
   await ack();
 
@@ -256,8 +275,14 @@ app.action({ block_id: "add-queue-help3" }, async ({ body, ack, say }) => {
     await say(section());
   }
 
-  if(environments[project].length > 1){
-    setTimeout(function(){ await say("TIMES UP")}, 3000);
+  if (environments[project].length > 1) {
+    timeout = setTimeout(function () {
+      let message = {
+        text: "Hey! Are you still using the environment?",
+        channel: body.user.id
+      }
+     sendMessage(message)
+    }, 3000);
   }
 });
 
