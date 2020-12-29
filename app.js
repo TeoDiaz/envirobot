@@ -268,18 +268,17 @@ const startTimeout = (project, body) => {
 
     let timeout = setTimeout(function () {
       let message = {
-        text: "Hey! Are you still using the environment?",
+        text: `Hey! ${user_id} are you still using the environment?`,
         channel: body.channel.id,
       };
       sendMessage(message);
-    }, 6000);
+    }, 3600000);
 
     timeouts[project] = { user: body.user.name, time: timeout };
   }
 };
 
 const stopTimeout = (project, name) => {
-  console.log(timeouts)
   if (timeouts[project].user == name) {
     clearInterval(timeouts[project].time);
   }
