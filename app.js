@@ -261,7 +261,7 @@ app.message("start", async ({ message, say }) => {
   await say(section());
 });
 
-app.action({ block_id: "add-queue-help3" }, async ({ body, ack, say }) => {
+app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
   console.log(body)
   // Acknowledge the action
   await ack();
@@ -286,7 +286,7 @@ app.action({ block_id: "add-queue-help3" }, async ({ body, ack, say }) => {
   }
 });
 
-app.action({ block_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
+app.action({ action_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -300,7 +300,7 @@ app.action({ block_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
   }
 });
 
-app.action({ block_id: "add-queue-help4" }, async ({ body, ack, say }) => {
+app.action({ action_id: "add-queue-help4" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -314,7 +314,7 @@ app.action({ block_id: "add-queue-help4" }, async ({ body, ack, say }) => {
   }
 });
 
-app.action({ block_id: "add-queue-remmedios4" }, async ({ body, ack, say }) => {
+app.action({ action_id: "add-queue-remmedios4" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
