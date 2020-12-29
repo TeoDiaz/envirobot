@@ -287,13 +287,13 @@ app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
       }
     });
 
-    timmeout = setTimeout(function () {
+    setTimeout(function () {
       let message = {
         text: "Hey! Are you still using the environment?",
         channel: body.channel.id,
       };
       sendMessage(message);
-    }, 2000);
+    }, 5000);
   }
 });
 
