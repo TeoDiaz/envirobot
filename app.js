@@ -95,7 +95,7 @@ let section = () => {
       },
       {
         type: "actions",
-        block_id: "leave-queue-4",
+        block_id: "leave-queue-3",
         elements: [
           {
             type: "button",
