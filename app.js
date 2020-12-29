@@ -242,7 +242,7 @@ const removeName = (project, name) => {
   }
 };
 
-export const sendMessage = async (message) => {
+const sendMessage = async (message) => {
   await web.chat
     .postMessage({
       text: message.text,
