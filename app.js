@@ -280,7 +280,7 @@ const startTimeout = (project, body) => {
 
 const stopTimeout = (project, name) => {
   console.log(timeouts)
-  if (timeouts[project].name == name) {
+  if (timeouts[project].user == name) {
     clearInterval(timeouts[project].time);
   }
 };
