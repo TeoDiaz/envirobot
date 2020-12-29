@@ -12,7 +12,7 @@ let changed = false;
 
 const restartEnviroments = () => {
   environments = {
-    help3: ["empty"],
+    help3: ["francis"],
     remedios3: ["empty"],
     help4: ["empty"],
     remedios4: ["empty"],
@@ -61,7 +61,6 @@ let section = () => {
       },
       {
         type: "actions",
-        block_id: "add-queue-3",
         elements: [
           {
             type: "button",
@@ -71,6 +70,7 @@ let section = () => {
               text: "HelpInApp",
             },
             style: "primary",
+            action_id: "add-queue-help3",
             value: "help3",
           },
           {
@@ -81,13 +81,14 @@ let section = () => {
               text: "Remedios",
             },
             style: "primary",
+            action_id: "add-queue-remedios3",
             value: "remedios3",
           },
         ],
       },
       {
         type: "actions",
-        block_id: "leave-queue-3",
+        block_id: "leave-queue-4",
         elements: [
           {
             type: "button",
@@ -145,7 +146,6 @@ let section = () => {
       },
       {
         type: "actions",
-        block_id: "add-queue-4",
         elements: [
           {
             type: "button",
@@ -155,6 +155,7 @@ let section = () => {
               text: "HelpInApp",
             },
             style: "primary",
+            action_id: "add-queue-help4",
             value: "help4",
           },
           {
@@ -165,6 +166,7 @@ let section = () => {
               text: "Remedios",
             },
             style: "primary",
+            action_id: "add-queue-remedios4",
             value: "remedios4",
           },
         ],
@@ -241,7 +243,25 @@ app.message("start", async ({ message, say }) => {
   await say(section());
 });
 
-app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
+app.action({ block_id: "add-queue-help3" }, async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.actions[0].value;
+
+  changeName(project, body.user.name);
+
+  if (changed) {
+    changed = false;
+    await say(section());
+  }
+
+  if(environments[project].length > 1){
+    setTimeout(function(){ await say("TIMES UP")}, 3000);
+  }
+});
+
+app.action({ block_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
@@ -255,7 +275,21 @@ app.action({ block_id: "add-queue-3" }, async ({ body, ack, say }) => {
   }
 });
 
-app.action({ block_id: "add-queue-4" }, async ({ body, ack, say }) => {
+app.action({ block_id: "add-queue-help4" }, async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.actions[0].value;
+
+  changeName(project, body.user.name);
+
+  if (changed) {
+    changed = false;
+    await say(section());
+  }
+});
+
+app.action({ block_id: "add-queue-remmedios4" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
