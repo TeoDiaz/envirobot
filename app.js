@@ -282,7 +282,7 @@ app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
     user = environments[project][0];
     let user_id;
 
-    Object.values(obj).some((key) => {
+    Object.values(users).some((key) => {
       if (key["name"] == user) {
         user_id = key.id;
       }
