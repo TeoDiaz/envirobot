@@ -281,8 +281,10 @@ const startTimeout = (project, body) => {
 };
 
 const stopTimeout = (project, name) => {
-  if (timeouts[project].user == name) {
-    clearInterval(timeouts[project].time);
+  if (body.user.name == environments[project][0]) {
+    if (timeouts[project].user == name) {
+      clearInterval(timeouts[project].time);
+    }
   }
 };
 
