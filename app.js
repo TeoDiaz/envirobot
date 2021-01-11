@@ -337,7 +337,7 @@ app.action({ action_id: "add-queue-help4" }, async ({ body, ack, say }) => {
 });
 
 app.action(
-  { action_id: "add-queue-remmedios4" },
+  { action_id: "add-queue-remedios4" },
   async ({ body, ack, say }) => {
     // Acknowledge the action
     await ack();
