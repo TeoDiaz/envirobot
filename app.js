@@ -382,6 +382,8 @@ app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
 
   removeUser(project, body.user.name);
 
+  stopTimeout(project, body.user.name);
+
   if (changed) {
     changed = false;
     await say(section());
