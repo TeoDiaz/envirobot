@@ -18,7 +18,7 @@ let changed = false;
 
 let timeouts = {};
 
-let intervalTime = 5000;
+let intervalTime = 10000;
 
 const restartEnviroments = () => {
   environments = {
@@ -270,7 +270,7 @@ const startTimeout = (project, body) => {
 
     let timeout = setTimeout(function () {
       let message = {
-        text: `Hey! ${user_id} are you still using the environment?`,
+        text: `Hey! <@${user_id}>! Are you still using the environment?`,
         channel: body.channel.id,
       };
       sendMessage(message);
@@ -353,7 +353,7 @@ app.action({ action_id: "add-queue-remedios4" }, async ({ body, ack, say }) => {
   if (changed) {
     changed = false;
     startTimeout(project, body);
-    
+
     await say(section());
   }
 });
