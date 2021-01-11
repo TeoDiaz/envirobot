@@ -18,6 +18,8 @@ let changed = false;
 
 let timeouts = {};
 
+let intervalTime = 5000;
+
 const restartEnviroments = () => {
   environments = {
     help3: ["empty"],
@@ -272,7 +274,7 @@ const startTimeout = (project, body) => {
         channel: body.channel.id,
       };
       sendMessage(message);
-    }, 3600000);
+    }, intervalTime);
 
     timeouts[project] = { user: body.user.name, time: timeout };
   }
@@ -318,6 +320,8 @@ app.action({ action_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
 
   if (changed) {
     changed = false;
+    startTimeout(project, body);
+
     await say(section());
   }
 });
@@ -332,26 +336,27 @@ app.action({ action_id: "add-queue-help4" }, async ({ body, ack, say }) => {
 
   if (changed) {
     changed = false;
+    startTimeout(project, body);
+
     await say(section());
   }
 });
 
-app.action(
-  { action_id: "add-queue-remedios4" },
-  async ({ body, ack, say }) => {
-    // Acknowledge the action
-    await ack();
+app.action({ action_id: "add-queue-remedios4" }, async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
 
-    let project = body.actions[0].value;
+  let project = body.actions[0].value;
 
-    addUser(project, body.user);
+  addUser(project, body.user);
 
-    if (changed) {
-      changed = false;
-      await say(section());
-    }
+  if (changed) {
+    changed = false;
+    startTimeout(project, body);
+    
+    await say(section());
   }
-);
+});
 
 app.action({ block_id: "leave-queue-3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
