@@ -22,7 +22,7 @@ let intervalTime = 10000;
 
 const restartEnviroments = () => {
   environments = {
-    help3: ["empty"],
+    help3: ["Francis", "Bea"],
     remedios3: ["empty"],
     help4: ["empty"],
     remedios4: ["empty"],
