@@ -22,12 +22,12 @@ let intervalTime = 10000;
 
 const restartEnviroments = () => {
   environments = {
-    help3: ["bea", "chris"],
-    remedios3: ["empty"],
-    tagger3: ["empty"],
-    widget3: ["empty"],
-    help4: ["empty"],
-    remedios4: ["empty"],
+    help3: [":tumbleweed:"],
+    remedios3: [":tumbleweed:"],
+    tagger3: [":tumbleweed:"],
+    widget3: [":tumbleweed:"],
+    help4: [":tumbleweed:"],
+    remedios4: [":tumbleweed:"],
   };
 };
 
