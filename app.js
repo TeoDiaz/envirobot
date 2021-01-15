@@ -22,8 +22,10 @@ let intervalTime = 10000;
 
 const restartEnviroments = () => {
   environments = {
-    help3: ["Francis", "Bea"],
+    help3: ["empty"],
     remedios3: ["empty"],
+    tagger3: ["empty"],
+    widget3: ["empty"],
     help4: ["empty"],
     remedios4: ["empty"],
   };
@@ -67,6 +69,22 @@ let section = () => {
             type: "mrkdwn",
             text: environments.remedios3.join(" | "),
           },
+          {
+            type: "mrkdwn",
+            text: "Zendesk-tagger:",
+          },
+          {
+            type: "mrkdwn",
+            text: environments.tagger3.join(" | "),
+          },
+          {
+            type: "mrkdwn",
+            text: "Zendesk-widget:",
+          },
+          {
+            type: "mrkdwn",
+            text: environments.widget3.join(" | "),
+          },
         ],
       },
       {
@@ -77,7 +95,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "HelpInApp",
+              text: "IN: HelpInApp",
             },
             style: "primary",
             action_id: "add-queue-help3",
@@ -88,11 +106,33 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "Remedios",
+              text: "IN: Remedios",
             },
             style: "primary",
             action_id: "add-queue-remedios3",
             value: "remedios3",
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "IN: Zendesk-tagger",
+            },
+            style: "primary",
+            action_id: "add-queue-tagger3",
+            value: "tagger3",
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "IN: Zendesk-widget",
+            },
+            style: "primary",
+            action_id: "add-queue-widget3",
+            value: "widget3",
           },
         ],
       },
@@ -105,7 +145,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "HelpInApp",
+              text: "OUT: HelpInApp",
             },
             style: "danger",
             value: "help3",
@@ -115,10 +155,30 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "Remedios",
+              text: "OUT: Remedios",
             },
             style: "danger",
             value: "remedios3",
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "OUT: Zendesk-tagger",
+            },
+            style: "danger",
+            value: "tagger3",
+          },
+          {
+            type: "button",
+            text: {
+              type: "plain_text",
+              emoji: true,
+              text: "OUT: Zendesk-widget",
+            },
+            style: "danger",
+            value: "widget3",
           },
         ],
       },
@@ -313,6 +373,38 @@ app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
 });
 
 app.action({ action_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.actions[0].value;
+
+  addUser(project, body.user);
+
+  if (changed) {
+    changed = false;
+    startTimeout(project, body);
+
+    await say(section());
+  }
+});
+
+app.action({ action_id: "add-queue-tagger3" }, async ({ body, ack, say }) => {
+  // Acknowledge the action
+  await ack();
+
+  let project = body.actions[0].value;
+
+  addUser(project, body.user);
+
+  if (changed) {
+    changed = false;
+    startTimeout(project, body);
+
+    await say(section());
+  }
+});
+
+app.action({ action_id: "add-queue-widget3" }, async ({ body, ack, say }) => {
   // Acknowledge the action
   await ack();
 
