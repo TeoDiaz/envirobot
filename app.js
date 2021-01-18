@@ -95,7 +95,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "IN:  HelpInApp",
+              text: "HelpInApp",
             },
             style: "primary",
             action_id: "add-queue-help3",
@@ -106,7 +106,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "IN:  Remedios",
+              text: "Remedios",
             },
             style: "primary",
             action_id: "add-queue-remedios3",
@@ -117,7 +117,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "IN:  Zendesk-tagger",
+              text: "Zendesk-tagger",
             },
             style: "primary",
             action_id: "add-queue-tagger3",
@@ -128,7 +128,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "IN:  Zendesk-widget",
+              text: "Zendesk-widget",
             },
             style: "primary",
             action_id: "add-queue-widget3",
@@ -145,7 +145,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "OUT: HelpInApp",
+              text: "HelpInApp",
             },
             style: "danger",
             value: "help3",
@@ -155,7 +155,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "OUT: Remedios",
+              text: "Remedios",
             },
             style: "danger",
             value: "remedios3",
@@ -165,7 +165,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "OUT: Zendesk-tagger",
+              text: "Zendesk-tagger",
             },
             style: "danger",
             value: "tagger3",
@@ -175,7 +175,7 @@ let section = () => {
             text: {
               type: "plain_text",
               emoji: true,
-              text: "OUT: Zendesk-widget",
+              text: "Zendesk-widget",
             },
             style: "danger",
             value: "widget3",
