@@ -18,7 +18,7 @@ let changed = false;
 
 let timeouts = {};
 
-let intervalTime = 10000;
+let intervalTime = 7200000;
 
 const restartEnviroments = () => {
   environments = {
@@ -349,7 +349,7 @@ const stopTimeout = (project, name) => {
 };
 
 // Listens to incoming messages that contain "hello"
-app.message("start", async ({ message, say }) => {
+app.message("start envirobot", async ({ message, say }) => {
   restartEnviroments();
 
   // say() sends a message to the channel where the event was triggered
