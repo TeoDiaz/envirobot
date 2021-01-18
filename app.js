@@ -276,7 +276,7 @@ const addUser = (project, user) => {
 
   if (
     environments.hasOwnProperty(project) &&
-    environments[project][0] == "empty"
+    environments[project][0] == ":tumbleweed:"
   ) {
     environments[project].shift();
     environments[project].push(user.name);
@@ -298,7 +298,7 @@ const removeUser = (project, name) => {
 
     if (newArray.length < 1) {
       environments[project].shift();
-      environments[project].push("empty");
+      environments[project].push(":tumbleweed:");
       changed = true;
     } else if (environments[project].length != newArray.length) {
       environments[project] = newArray;
