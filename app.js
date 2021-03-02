@@ -1,6 +1,10 @@
 const { App } = require("@slack/bolt");
 const { WebClient } = require("@slack/web-api");
 
+var express = require("express");
+var express = require("express");
+var router = express();
+
 // Initializes your app with your bot token and signing secret
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -482,6 +486,14 @@ app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
     changed = false;
     await say(section());
   }
+});
+
+router.post("/", function (req, res, next) {
+  // Get event payload
+  let payload = req.body;
+
+  // Respond to this event with HTTP 200 status
+  res.sendStatus(200);
 });
 
 (async () => {
