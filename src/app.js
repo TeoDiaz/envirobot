@@ -2,7 +2,6 @@ const { App } = require("@slack/bolt");
 const { WebClient } = require("@slack/web-api");
 
 var express = require("express");
-var express = require("express");
 var router = express();
 
 // Initializes your app with your bot token and signing secret
@@ -26,12 +25,12 @@ let intervalTime = 7200000;
 
 const restartEnviroments = () => {
   environments = {
-    help3: [":tumbleweed:"],
-    remedios3: [":tumbleweed:"],
-    tagger3: [":tumbleweed:"],
-    widget3: [":tumbleweed:"],
-    help4: [":tumbleweed:"],
-    remedios4: [":tumbleweed:"],
+    help5: [":tumbleweed:"],
+    remedios5: [":tumbleweed:"],
+    tagger5: [":tumbleweed:"],
+    widget5: [":tumbleweed:"],
+    help6: [":tumbleweed:"],
+    remedios6: [":tumbleweed:"],
   };
 };
 
@@ -51,7 +50,7 @@ let section = () => {
         fields: [
           {
             type: "mrkdwn",
-            text: "*Support-3*",
+            text: "*Support-5*",
           },
           {
             type: "mrkdwn",
@@ -63,7 +62,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help3.join(" | "),
+            text: environments.help5.join(" | "),
           },
           {
             type: "mrkdwn",
@@ -71,7 +70,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.remedios3.join(" | "),
+            text: environments.remedios5.join(" | "),
           },
           {
             type: "mrkdwn",
@@ -79,7 +78,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.tagger3.join(" | "),
+            text: environments.tagger5.join(" | "),
           },
           {
             type: "mrkdwn",
@@ -87,7 +86,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.widget3.join(" | "),
+            text: environments.widget5.join(" | "),
           },
         ],
       },
@@ -102,8 +101,8 @@ let section = () => {
               text: "HelpInApp",
             },
             style: "primary",
-            action_id: "add-queue-help3",
-            value: "help3",
+            action_id: "add-queue-help5",
+            value: "help5",
           },
           {
             type: "button",
@@ -113,8 +112,8 @@ let section = () => {
               text: "Remedios",
             },
             style: "primary",
-            action_id: "add-queue-remedios3",
-            value: "remedios3",
+            action_id: "add-queue-remedios5",
+            value: "remedios5",
           },
           {
             type: "button",
@@ -124,8 +123,8 @@ let section = () => {
               text: "Zendesk-tagger",
             },
             style: "primary",
-            action_id: "add-queue-tagger3",
-            value: "tagger3",
+            action_id: "add-queue-tagger5",
+            value: "tagger5",
           },
           {
             type: "button",
@@ -135,14 +134,14 @@ let section = () => {
               text: "Zendesk-widget",
             },
             style: "primary",
-            action_id: "add-queue-widget3",
-            value: "widget3",
+            action_id: "add-queue-widget5",
+            value: "widget5",
           },
         ],
       },
       {
         type: "actions",
-        block_id: "leave-queue-3",
+        block_id: "leave-queue-5",
         elements: [
           {
             type: "button",
@@ -152,7 +151,7 @@ let section = () => {
               text: "HelpInApp",
             },
             style: "danger",
-            value: "help3",
+            value: "help5",
           },
           {
             type: "button",
@@ -162,7 +161,7 @@ let section = () => {
               text: "Remedios",
             },
             style: "danger",
-            value: "remedios3",
+            value: "remedios5",
           },
           {
             type: "button",
@@ -172,7 +171,7 @@ let section = () => {
               text: "Zendesk-tagger",
             },
             style: "danger",
-            value: "tagger3",
+            value: "tagger5",
           },
           {
             type: "button",
@@ -182,7 +181,7 @@ let section = () => {
               text: "Zendesk-widget",
             },
             style: "danger",
-            value: "widget3",
+            value: "widget5",
           },
         ],
       },
@@ -194,7 +193,7 @@ let section = () => {
         fields: [
           {
             type: "mrkdwn",
-            text: "*Support-4*",
+            text: "*Support-6*",
           },
           {
             type: "mrkdwn",
@@ -206,7 +205,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.help4.join(" | "),
+            text: environments.help6.join(" | "),
           },
           {
             type: "mrkdwn",
@@ -214,7 +213,7 @@ let section = () => {
           },
           {
             type: "mrkdwn",
-            text: environments.remedios4.join(" | "),
+            text: environments.remedios6.join(" | "),
           },
         ],
       },
@@ -229,8 +228,8 @@ let section = () => {
               text: "HelpInApp",
             },
             style: "primary",
-            action_id: "add-queue-help4",
-            value: "help4",
+            action_id: "add-queue-help6",
+            value: "help6",
           },
           {
             type: "button",
@@ -240,14 +239,14 @@ let section = () => {
               text: "Remedios",
             },
             style: "primary",
-            action_id: "add-queue-remedios4",
-            value: "remedios4",
+            action_id: "add-queue-remedios6",
+            value: "remedios6",
           },
         ],
       },
       {
         type: "actions",
-        block_id: "leave-queue-4",
+        block_id: "leave-queue-6",
         elements: [
           {
             type: "button",
@@ -257,7 +256,7 @@ let section = () => {
               text: "HelpInApp",
             },
             style: "danger",
-            value: "help4",
+            value: "help6",
           },
           {
             type: "button",
@@ -267,7 +266,7 @@ let section = () => {
               text: "Remedios",
             },
             style: "danger",
-            value: "remedios4",
+            value: "remedios6",
           },
         ],
       },
@@ -340,6 +339,8 @@ const startTimeout = (project, body) => {
       sendMessage(message);
     }, intervalTime);
 
+    console.log(`setTimeout for ${body.user.name} in ${project}`);
+
     timeouts[project] = { user: body.user.name, time: timeout };
   }
 };
@@ -347,163 +348,218 @@ const startTimeout = (project, body) => {
 const stopTimeout = (project, name) => {
   if (name == environments[project][0]) {
     if (timeouts[project].user == name) {
-      clearInterval(timeouts[project].time);
+      console.log(`ClearTimeout for ${name} in ${project}`);
+
+      clearTimeout(timeouts[project].time);
     }
   }
 };
 
 // Listens to incoming messages that contain "hello"
-app.message("start envirobot", async ({ message, say }) => {
+app.message("hello", async ({ message, say }) => {
+  // say() sends a message to the channel where the event was triggered
+  await say(`Hey there <@${message.user}>!`);
+});
+
+app.message("start envirobot", async ({ say }) => {
+  console.log("Received message: start envirobot");
+
   restartEnviroments();
 
-  // say() sends a message to the channel where the event was triggered
   await say(section());
 });
 
-app.action({ action_id: "add-queue-help3" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { action_id: "add-queue-help5" },
+  async ({ body, ack, respond, say }) => {
+    console.log(`${body.user.name} Adding to queue for HelpInApp in Support-5`);
 
-  let project = body.actions[0].value;
+    await ack();
 
-  addUser(project, body.user);
+    let project = body.actions[0].value;
 
-  if (changed) {
-    changed = false;
-    startTimeout(project, body);
+    addUser(project, body.user);
 
-    await say(section());
+    if (changed) {
+      changed = false;
+      startTimeout(project, body);
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
-});
+);
 
-app.action({ action_id: "add-queue-remedios3" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { action_id: "add-queue-remedios5" },
+  async ({ body, ack, respond, say }) => {
+    console.log(`${body.user.name} Adding to queue for Remedios in Support-5`);
 
-  let project = body.actions[0].value;
+    await ack();
 
-  addUser(project, body.user);
+    let project = body.actions[0].value;
 
-  if (changed) {
-    changed = false;
-    startTimeout(project, body);
+    addUser(project, body.user);
 
-    await say(section());
+    if (changed) {
+      changed = false;
+      startTimeout(project, body);
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
-});
+);
 
-app.action({ action_id: "add-queue-tagger3" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { action_id: "add-queue-tagger5" },
+  async ({ body, ack, respond, say }) => {
+    console.log(
+      `${body.user.name} Adding to queue for Zendesk-tagger in Support-5`
+    );
 
-  let project = body.actions[0].value;
+    await ack();
 
-  addUser(project, body.user);
+    let project = body.actions[0].value;
 
-  if (changed) {
-    changed = false;
-    startTimeout(project, body);
+    addUser(project, body.user);
 
-    await say(section());
+    if (changed) {
+      changed = false;
+      startTimeout(project, body);
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
-});
+);
 
-app.action({ action_id: "add-queue-widget3" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { action_id: "add-queue-widget5" },
+  async ({ body, ack, respond, say }) => {
+    console.log(`${body.user.name} Adding to queue for Widget in Support-5`);
 
-  let project = body.actions[0].value;
+    await ack();
 
-  addUser(project, body.user);
+    let project = body.actions[0].value;
 
-  if (changed) {
-    changed = false;
-    startTimeout(project, body);
+    addUser(project, body.user);
 
-    await say(section());
+    if (changed) {
+      changed = false;
+      startTimeout(project, body);
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
-});
+);
 
-app.action({ action_id: "add-queue-help4" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { action_id: "add-queue-help6" },
+  async ({ body, ack, respond, say }) => {
+    console.log(`${body.user.name} Adding to queue for HelpInApp in Support-6`);
 
-  let project = body.actions[0].value;
+    await ack();
 
-  addUser(project, body.user);
+    let project = body.actions[0].value;
 
-  if (changed) {
-    changed = false;
-    startTimeout(project, body);
+    addUser(project, body.user);
 
-    await say(section());
+    if (changed) {
+      changed = false;
+      startTimeout(project, body);
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
-});
+);
 
-app.action({ action_id: "add-queue-remedios4" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { action_id: "add-queue-remedios6" },
+  async ({ body, ack, respond, say }) => {
+    console.log(`${body.user.name} Adding to queue for Remedios in Support-6`);
 
-  let project = body.actions[0].value;
+    await ack();
 
-  addUser(project, body.user);
+    let project = body.actions[0].value;
 
-  if (changed) {
-    changed = false;
-    startTimeout(project, body);
+    addUser(project, body.user);
 
-    await say(section());
+    if (changed) {
+      changed = false;
+      startTimeout(project, body);
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
-});
+);
 
-app.action({ block_id: "leave-queue-3" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { block_id: "leave-queue-5" },
+  async ({ body, ack, respond, say }) => {
+    console.log(`${body.user.name} leaving queue Support-5`);
 
-  let project = body.actions[0].value;
+    await ack();
 
-  removeUser(project, body.user.name);
+    let project = body.actions[0].value;
 
-  stopTimeout(project, body.user.name);
+    stopTimeout(project, body.user.name);
 
-  if (changed) {
-    changed = false;
-    await say(section());
+    removeUser(project, body.user.name);
+
+    if (changed) {
+      changed = false;
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
-});
+);
 
-app.action({ block_id: "leave-queue-4" }, async ({ body, ack, say }) => {
-  // Acknowledge the action
-  await ack();
+app.action(
+  { block_id: "leave-queue-6" },
+  async ({ body, ack, respond, say }) => {
+    console.log(`${body.user.name} leaving queue Support-6`);
 
-  let project = body.actions[0].value;
+    await ack();
 
-  removeUser(project, body.user.name);
+    let project = body.actions[0].value;
 
-  stopTimeout(project, body.user.name);
+    stopTimeout(project, body.user.name);
 
-  if (changed) {
-    changed = false;
-    await say(section());
+    removeUser(project, body.user.name);
+
+    if (changed) {
+      changed = false;
+
+      await respond({ delete_original: true });
+      await say(section());
+    }
   }
+);
+
+app.error(async (error) => {
+  // Check the details of the error to handle cases where you should retry sending a message or stop the app
+  console.error(error);
 });
 
 router.post("/", function (req, res, next) {
-  // Get event payload
-  let payload = req.body;
+  console.log("Request challenge");
 
-  // Respond to this event with HTTP 200 status
-  res.sendStatus(200);
+  res.status(200).send(req.body.challenge);
 });
 
 (async () => {
   // Start your app
   let port = process.env.PORT;
   if (port == null || port == "") {
-    port = 8000;
+    port = 8080;
   }
 
   await app.start(port);
 
-  console.log("Envirobot app is running!");
+  console.log(`Envirobot app is running on port: ${port}!`);
 })();
