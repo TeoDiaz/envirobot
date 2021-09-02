@@ -1,8 +1,0 @@
-deploy:
-  image: us.gcr.io/cabify-controlpanel/product/builder-tools/kapsule/toolkit
-  stage: deploy
-  variables:
-    REPOSITORY: platform/builder-tools/tooling-manifests
-    DEPLOYMENT: support/envirobot/tooling/deployment.yml
-  script:
-  - bash scripts/deploy.sh
